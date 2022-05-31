@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class BringeController : MonoBehaviour
 {
-     
+    [SerializeField] GameObject _Bdoor;
     [SerializeField] InputField _password;
     [SerializeField] GameObject _passwordDashbord;
-    [SerializeField] Transform _BridgeStep;
+    //[SerializeField] Transform _BridgeDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +27,15 @@ public class BringeController : MonoBehaviour
     {
         if (_password.text == "Mellon")
         {
-            _BridgeStep.position = new Vector3(0, 0.2f, -16f);
+            Destroy(_Bdoor);
+            //_BridgeDoor.position = new Vector3(6, 0.9445f, -16.6661f);
         }
     }
     public void PasswordControl()
     {
         _passwordDashbord.SetActive(true);
     }
+
+    
+  
 }
