@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
             _isJump = false;
             _animator.SetBool("__Jump", false);
         }
+        Flip();
     }
     private void FixedUpdate()
     {
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     {
         _moveController.Horizontal(_playerTransform, _speed);
         _moveController.Vertical(_playerTransform, _speed);
+        _animator.SetFloat("__isWalk", Mathf.Abs(_moveController.HorizontalAxis));
+        _animator.SetFloat("__isWalk", Mathf.Abs(_moveController.VerticalAxis));
+
     }
     void Jump()
     {
@@ -50,5 +54,24 @@ public class PlayerController : MonoBehaviour
         }
         
 
+    }
+    void Flip()
+    {
+        //if (Input.GetKey(KeyCode.A)&& Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    _playerTransform.rotation = new Quaternion(0, -90, 0, 0);
+        //}
+        //if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    _playerTransform.rotation = new Quaternion(0, -270, 0, 0);
+        //}
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+        {
+            _playerTransform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.LeftShift))
+        {
+            _playerTransform.rotation = new Quaternion(0, -180, 0, 0);
+        }
     }
 }
